@@ -1,0 +1,23 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "serverless_ffcs",
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "consistent-return": 0,
+    "global-require": 0,
+    "arrow-body-style": 0,
+    "import/no-dynamic-require": 0,
+    "no-underscore-dangle": [
+      0,
+      {
+        "exceptions": [
+          "_id"
+        ]
+      }
+    ]
+  }
+}
