@@ -1,0 +1,21 @@
+{
+  "name": "serverlessffcs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.1",
+    "co": "^4.6.0",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.12.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}

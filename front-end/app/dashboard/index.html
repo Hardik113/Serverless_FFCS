@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App + jQuery">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <title>FFCS - Course Registration</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- ANIMATE.CSS-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+   <!-- WEATHER ICONS-->
+   <link rel="stylesheet" href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/vendor/simple-line-icons/css/simple-line-icons.css">
+   <link rel="stylesheet" href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/vendor/weather-icons/css/weather-icons.min.css">
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/css/app.css" id="maincss">
+</head>
+
+<body>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav role="navigation" class="navbar topnavbar">
+            <!-- START navbar header-->
+ 
+            <!-- END navbar header-->
+            <!-- START Nav wrapper-->
+            <div class="nav-wrapper">
+               <!-- START Left navbar-->
+               <ul class="nav navbar-nav">
+                  
+                  <!-- START User avatar toggle-->
+                  <li>
+                     <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                     <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                        <em class="icon-user"></em>
+                     </a>
+                  </li>
+                  <!-- END User avatar toggle-->
+                  <!-- START lock screen-->
+                  <li>
+                     <a href="../dashboard" title="Home screen">
+                        <em class="icon-home"></em>
+                     </a>
+                  </li>
+                  <!-- END lock screen-->
+               </ul>
+               <!-- END Right Navbar-->
+            </div>
+            <!-- END Nav wrapper-->
+            <!-- START Search form-->
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+      </header>
+      <!-- sidebar-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav data-sidebar-anyclick-close="" class="sidebar">
+               <!-- START sidebar nav-->
+               <ul class="nav">
+                  <!-- START user info-->
+                  <li class="has-user-block">
+                     <div id="user-block" class="collapse">
+                        <div class="item user-block">
+                           <!-- User picture-->
+                           <div class="user-block-picture">
+                              <div class="user-block-status">
+                                 <img src="img/user/02.jpg" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                                 <div class="circle circle-success circle-lg"></div>
+                              </div>
+                           </div>
+                           <!-- Name and Job-->
+                           <div class="user-block-info">
+                              <span id = "name" class="user-block-name"></span>
+                              <span id = "reg_num" class="user-block-role"></span>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <!-- END user info-->
+                  <!-- Iterates over all sidebar items-->
+                  <!--<li class="nav-heading ">
+                     <span data-localize="sidebar.heading.HEADER">Main Navigation</span>
+                  </li>
+                  <li class=" ">
+                     <a href="http://localhost:8000/app/dashboard.html" title="Dashboard" data-toggle="collapse">
+                        <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
+                     </a>
+                  </li>-->
+                  <li class="nav-heading ">
+                     <span data-localize="sidebar.heading.COMPONENTS">Course registration</span>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=PE">
+                        <em class="icon-chemistry"></em>Program Elective
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=PC">
+                        <em class="icon-note"></em>Program Core
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=PE">
+                        <em class="icon-graph"></em>
+                        University Elective
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=UC" >
+                        <em class="icon-grid"></em>
+                        University Core
+                     </a>
+                  </li>
+                  <li class=" ">
+                    <a href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com" >
+                        <em class="icon-logout"></em>
+                        Log Out
+                     </a>
+                  </li>
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- Main section-->
+      <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <div class="content-heading">
+               <!-- START Language list-->
+               <!-- END Language list-->
+               VIT Course Registration
+            </div>
+            <!-- START widgets box-->
+            <div class="row">
+               <div class="col-lg-3 col-sm-6">
+                  <!-- START widget-->
+                  <div class="panel widget bg-primary">
+                     <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-primary-dark pv-lg">
+                           <em class="icon-cloud-upload fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                           <div id = "credits_reg" class="h2 mt0">Loading</div>
+                           <div class="text-uppercase">Credits registered</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-sm-6">
+                  <!-- START widget-->
+                  <div class="panel widget bg-purple">
+                     <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-purple-dark pv-lg">
+                           <em class="icon-globe fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                           <div id = "credits_remaining" class="h2 mt0">Loading</div>
+                           <div class="text-uppercase">Credits remaining</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 col-sm-12">
+                  <!-- START widget-->
+                  <div class="panel widget bg-green">
+                     <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-green-dark pv-lg">
+                           <em class="icon-bubbles fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                           <div id = "credits_completed" class="h2 mt0">Loading</div>
+                           <div class="text-uppercase">Credits completed</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 col-sm-12">
+                  <!-- START date widget-->
+                  <div class="panel widget">
+                     <div class="row row-table">
+                        <div class="col-xs-4 text-center bg-green pv-lg">
+                           <!-- See formats: https://docs.angularjs.org/api/ng/filter/date-->
+                           <div data-now="" data-format="MMMM" class="text-sm"></div>
+                           <br>
+                           <div data-now="" data-format="D" class="h2 mt0"></div>
+                        </div>
+                        <div class="col-xs-8 pv-lg">
+                           <div data-now="" data-format="dddd" class="text-uppercase"></div>
+                           <br>
+                           <div data-now="" data-format="h:mm" class="h2 mt0"></div>
+                           <div data-now="" data-format="a" class="text-muted text-sm"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- END date widget-->
+               </div>
+            </div>
+            <div id = "my-courses" class="row">
+                  <!-- END widget-->
+            </div>
+            <!-- END widgets box-->
+         </div>
+      </section>
+      <!-- Page footer-->
+      <footer>
+         <span>&copy; 2018 - FFCS</span>
+      </footer>
+   </div>
+   <!-- =============== VENDOR SCRIPTS ===============-->
+   <!-- MODERNIZR-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+   <!-- JQUERY-->
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+   <!-- BOOTSTRAP-->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <!-- JQUERY EASING-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+   <!-- MOMENT JS-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.min.js"></script>
+   <!-- =============== APP SCRIPTS ===============-->
+   <script src="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/js/app.js"></script>
+   <script>
+       const colorArr = ['primary', 'success', 'danger', 'warning', 'info'];
+       $.ajax({
+        type: 'GET',
+        url: 'https://v8h67ad5b3.execute-api.us-east-1.amazonaws.com/dev/me',
+        crossDomain: true,
+        contentType: 'application/json',
+        beforeSend: (xhr) => {
+          xhr.setRequestHeader("Authorization", localStorage.getItem('token'));
+        },
+        success: (data) => {
+          console.log(data);
+          $('#credits_remaining').text(27 - data.user.credits_total);
+          $('#credits_completed').text(data.user.credits_completed);
+          $('#credits_reg').text(data.user.credits_total);
+          $('#name').text(data.user.name);
+          $('#reg_num').text(data.user.registration_number);
+
+          for(var i = 0; i < data.user.course_taken.length; i++) {
+            const color = colorArr[Math.floor(Math.random()*4)];
+            const course = `<div class="col-lg-6">
+                  <div style = "position: relative" class="panel widget">
+                     <div class="row row-table row-flush">
+                        <div class="col-xs-3 bg-${color} text-center">
+                           <em class="fa fa-book fa-2x"></em>
+                        </div>
+                        <button type="button" onclick = "deleteCourse('${data.user.course_taken[i]._id}')" style = "position: absolute;right: 2%; top: 5%;z-index: 1" class="btn bg-${color} btn-circle btn-sm"><i class="fa fa-trash"></i></button>
+                        <div class="col-xs-9">
+                           <div class="panel-body text-left">
+                              <h4 class="mt0">${data.user.course_taken[i].name}</h4>
+                              <h4 class="mt0 text-muted">${data.user.course_taken[i].code}</h4>
+                              <p class="mb0 text-muted">${data.user.course_taken[i].venue} ${data.user.course_taken[i].start_time}-${data.user.course_taken[i].end_time}</p>
+                              <p class="mb0 text-muted">${data.user.course_taken[i].slot}</p>
+                              <p class="mb0 text-muted">Credits: ${data.user.course_taken[i].credits}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>`;
+              $('#my-courses').append(course);
+          }
+          
+        },
+        error: (data) => {
+          console.log(data);
+        }
+       });
+
+       function deleteCourse(course_id) {
+         const data = {
+           courseId: course_id,
+         };
+         if (confirm('Are you sure you want to remove the course?')) {
+          $.ajax({
+            type: 'POST',
+            url: 'https://v8h67ad5b3.execute-api.us-east-1.amazonaws.com/dev/remove-course',
+            crossDomain: true,
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            beforeSend: (xhr) => {
+              xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+            },
+            success: (data) => {
+              console.log('success');
+              alert('Your Course Has Been removed');
+              location.reload();
+            },
+            error: (data) => {
+              alert('Some error occured');
+            }
+          });
+         }
+       }
+   </script>
+</body>
+
+</html>

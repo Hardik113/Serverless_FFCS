@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="Bootstrap Admin App + jQuery">
+   <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+   <title>FFCS - Course Registration</title>
+   <!-- =============== VENDOR STYLES ===============-->
+   <!-- FONT AWESOME-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- ANIMATE.CSS-->
+   <link rel="stylesheet" href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/vendor/simple-line-icons/css/simple-line-icons.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+   <!-- =============== PAGE VENDOR STYLES ===============-->
+   <!-- =============== BOOTSTRAP STYLES ===============-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <!-- =============== APP STYLES ===============-->
+   <link rel="stylesheet" href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/css/app.css" id="maincss">
+</head>
+
+<body>
+   <div class="wrapper">
+      <!-- top navbar-->
+      <header class="topnavbar-wrapper">
+         <!-- START Top Navbar-->
+         <nav role="navigation" class="navbar topnavbar">
+            <!-- START navbar header-->
+ 
+            <!-- END navbar header-->
+            <!-- START Nav wrapper-->
+            <div class="nav-wrapper">
+               <!-- START Left navbar-->
+               <ul class="nav navbar-nav">
+                  <!-- START User avatar toggle-->
+                  <li>
+                     <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                     <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
+                        <em class="icon-user"></em>
+                     </a>
+                  </li>
+                  <!-- END User avatar toggle-->
+                  <!-- START lock screen-->
+                  <li>
+                     <a href="../dashboard" title="Home screen">
+                        <em class="icon-home"></em>
+                     </a>
+                  </li>
+                  <!-- END lock screen-->
+               </ul>
+               <!-- END Right Navbar-->
+            </div>
+            <!-- END Nav wrapper-->
+            <!-- START Search form-->
+            <!-- END Search form-->
+         </nav>
+         <!-- END Top Navbar-->
+      </header>
+      <!-- sidebar-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <div class="aside-inner">
+            <nav data-sidebar-anyclick-close="" class="sidebar">
+               <!-- START sidebar nav-->
+               <ul class="nav">
+                  <!-- START user info-->
+                  <li class="has-user-block">
+                     <div id="user-block" class="collapse">
+                        <div class="item user-block">
+                           <!-- User picture-->
+                           <div class="user-block-picture">
+                              <div class="user-block-status">
+                                 <img src="img/user/02.jpg" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                                 <div class="circle circle-success circle-lg"></div>
+                              </div>
+                           </div>
+                           <!-- Name and Job-->
+                           <div class="user-block-info">
+                              <span id = "name" class="user-block-name"></span>
+                              <span id = "reg_num" class="user-block-role"></span>
+                           </div>
+                        </div>
+                     </div>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=PE">
+                        <em class="icon-chemistry"></em>Program Elective
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=PC">
+                        <em class="icon-note"></em>Program Core
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=PE">
+                        <em class="icon-graph"></em>
+                        University Elective
+                     </a>
+                  </li>
+                  <li class=" ">
+                     <a href="../list-course.html?category=UC" >
+                        <em class="icon-grid"></em>
+                        University Core
+                     </a>
+                  </li>
+                  <li class=" ">
+                    <a href="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com" >
+                        <em class="icon-logout"></em>
+                        Log Out
+                     </a>
+                  </li>
+               </ul>
+               <!-- END sidebar nav-->
+            </nav>
+         </div>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- offsidebar-->
+      <!-- Main section-->
+      <!-- Main section-->
+      <!-- Main section-->
+      <section>
+         <!-- Page content-->
+         <div class="content-wrapper">
+            <h3 id = "course_id"></h3>
+            <div class="panel panel-default">
+               <div style = "height: 800px" class="panel-body">
+                  <form id="example-form" action="#">
+                     <div style = "height: 800px">
+                        <h4>Theory
+                           <br>
+                           <small>Please select your Theory slot.</small>
+                        </h4>
+                        <fieldset style = "overflow: scroll">
+                           <div class="table-responsive b0">
+                            <table id="datatable1" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th class = "wd-xlg">
+                                    <strong>Course Code</strong>
+                                  </th>
+                                  <th>
+                                    <strong>Faculty Name</strong>
+                                  </th>
+                                  <th>
+                                    <strong>Slot</strong>
+                                  </th>
+                                  <th>
+                                    <strong>Venue</strong>
+                                  </th>
+                                  <th class="text-center">
+                                    <strong>Status</strong>
+                                  </th>
+                                  <th class="text-center">
+                                    <strong>Seats</strong>
+                                  </th>
+                                  <th class="text-center">
+                                    <strong>Register</strong>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id = "theory">
+                                Loading
+                              </tbody>
+                            </table>
+                          </div>
+                        </fieldset>
+                        <h4>Lab<br>
+                           <small>Please select your Lab slot.</small>
+                        </h4>
+                        <fieldset>
+                            <div class="table-responsive b0">
+                            <table id="datatable1" class="table table-striped table-hover">
+                              <thead>
+                                <tr>
+                                  <th class = "wd-xlg">
+                                    <strong>Course Code</strong>
+                                  </th>
+                                  <th>
+                                    <strong>Faculty Name</strong>
+                                  </th>
+                                  <th>
+                                    <strong>Slot</strong>
+                                  </th>
+                                  <th>
+                                    <strong>Venue</strong>
+                                  </th>
+                                  <th class="text-center">
+                                    <strong>Status</strong>
+                                  </th>
+                                  <th class="text-center">
+                                    <strong>Register</strong>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id = "lab">
+                                Loading
+                              </tbody>
+                            </table>
+                          </div>
+                        </fieldset>
+                        <h4>Finish
+                           <br>
+                           <small>Submit your details</small>
+                        </h4>
+                        <fieldset>
+                           <p class="lead">One last check</p>
+                           <div class="checkbox c-checkbox">
+                              <label>
+                                 <input type="checkbox" required="required" name="terms">
+                                 <span class="fa fa-check"></span>I agree with the Terms and Conditions.</label>
+                                 <button style = "margin-left: 2%;" type = "button" onclick = "submitCourse()" class="btn btn-primary btn-lg">Submit</button>
+                           </div>
+                        </fieldset>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Page footer-->
+      <footer>
+         <span>&copy; 2018 - VIT University</span>
+      </footer>
+   </div>
+   <!-- =============== VENDOR SCRIPTS ===============-->
+   <!-- MODERNIZR-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+   <!-- JQUERY-->
+   <script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+   <!-- BOOTSTRAP-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <!-- =============== PAGE VENDOR SCRIPTS ===============-->
+   <!-- JQUERY VALIDATE-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+   <!-- JQUERY STEPS-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.js"></script>
+   <!-- =============== APP SCRIPTS ===============-->
+   <script src="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/js/demo/demo-wizard.js"></script>
+   <script src="http://serverlessffcsfe.s3-website-us-east-1.amazonaws.com/app/js/app.js"></script>
+   
+   
+   <script>
+     function getUrlParameter(sParam) {
+      var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+        }
+      }
+      const postData = {};
+      $('#course_id').text(getUrlParameter('code') + ' - ' + getUrlParameter('title'));
+      postData.course = getUrlParameter('id');
+      $.ajax({
+        type: 'GET',
+        crossDomain: true,
+        url: `https://v8h67ad5b3.execute-api.us-east-1.amazonaws.com/dev/course?course=${getUrlParameter('id')}`,
+        contentType: 'application/json',
+        beforeSend: (xhr) => {
+          xhr.setRequestHeader("Authorization", localStorage.getItem('token'));
+        },
+        success: (data) => {
+          $('#theory').text('');
+          $('#lab').text('');
+          let theoryCount = 0;
+          let labCount = 0;
+          console.log('success');
+          console.log(data);
+          for(let i = 0; i < data.count; i++) {
+            const type = (data.resArray[i].type === 'Theory') ? 'theory' : 'lab';
+            console.log(type);
+            var course = `
+              <tr>
+                <td>${data.resArray[i].course.course_code}</td>
+                <td>${data.resArray[i].faculty.name}</td>
+                <td>${data.resArray[i].slot}</td>
+                <td>${data.resArray[i].venue}</td>
+                <td class="text-center">
+                  <span class="mr-sm label label-success">Seats Left</span>
+                </td>
+                <td>${data.resArray[i].seats}</td>
+                <td class="text-center">
+                  <button type="button" onclick = "addCourse('${data.resArray[i]._id}', '${type}')" class="btn btn-sm btn-default">
+                    <em class="fa fa-hand-paper-o"></em>
+                  </button>
+                </td>
+              </tr>`;
+              if (type === 'theory') {
+                theoryCount++;
+                $('#theory').append(course);
+              } else {
+                labCount++;
+                $('#lab').append(course)
+              }
+          }
+          if (theoryCount === 0) {
+            $('#theory').text('No Theory slots for this Course');
+          } else if (labCount === 0) {
+            $('#theory').text('No Lab slots for this Course');
+          }
+        },
+        error: (data) => {
+          console.log('error');
+          console.log(data);
+        }
+      });
+
+      function addCourse(courseId, type) {
+        console.log(courseId);
+        if (type === 'theory') {
+          alert('Theory Course Added!');
+          postData.theory_slot = courseId;
+        } else {
+          alert('Lab Course Added!');
+          postData.lab_slot = courseId;
+        }
+      }
+
+      function submitCourse() {
+        if (!postData.theory_slot && !postData.lab_slot) {
+          alert('Please select a course first');
+          return false;
+        }
+        $.ajax({
+          type: 'POST',
+          crossDomain: true,
+          data: JSON.stringify(postData),
+          url: `https://v8h67ad5b3.execute-api.us-east-1.amazonaws.com/dev/add-course`,
+          contentType: 'application/json',
+          beforeSend: (xhr) => {
+            xhr.setRequestHeader("Authorization", localStorage.getItem('token'));
+          },
+          success: (data) => {
+            alert('The Course Has been added');
+            window.location.href = '../app/dashboard'
+          },
+          error: (data) => {
+            alert('Some error occured');
+            console.log(data);
+          }
+        });
+      }
+
+   </script>
+</body>
+
+</html>
